@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const getData = async (category: string) => {
-  const res = await fetch(`http://localhost:3000/api/products?category=${category}` , {cache: 'no-store'})
+  const res = await fetch(`/api/products?category=${category}` , {cache: 'no-store'})
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

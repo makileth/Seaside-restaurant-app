@@ -70,7 +70,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         // Stellen Sie sicher, dass Sie diese URL auf Ihre Zahlungsabschlussseite ändern
-        return_url: "http://localhost:3000/success",
+        return_url: "/success",
       },
     });
 

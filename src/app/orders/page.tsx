@@ -22,12 +22,12 @@ const OrdersPage = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"], // Unique key for this query
     queryFn: () =>
-      fetch("http://localhost:3000/api/orders").then((res) => res.json()), // Function to fetch data
+      fetch("/api/orders").then((res) => res.json()), // Function to fetch data
   });
 
   const mutation = useMutation({
     mutationFn: ({ id, status }: { id: string; status: string }) => {
-      return fetch(`http://localhost:3000/api/orders/${id}`, {
+      return fetch(`/api/orders/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
