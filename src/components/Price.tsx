@@ -1,42 +1,66 @@
 "use client";
 
+import { ProductType } from "@/types/types";
 import React, { useEffect, useState } from "react";
+import { useCartStore } from "@/utils/store";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const Price = ({ productData }: { productData: ProductType }) => {
 
-type Props = {
-  price: number;
-  id: number;
-  options?: { title: string; additionalPrice: number }[];
-};
-
-const Price = ({ price, id, options }: Props) => {
-  const [total, setTotal] = useState(price);
+  const { addToCart } = useCartStore();
+  const [total, setTotal] = useState(productData.price); // total price
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
 
+  
+  const handleAddToCart = () => {
+    addToCart({
+      id: productData.id,
+      title: productData.title,
+      img: productData.img,
+      price: total,
+      ...(productData.options?.length && { // a spread operator to conditionally add the prop
+        optionTitle: productData.options[selected].title,
+      }),
+      quantity: quantity,
+    })
+
+    toast.success(`${productData.title} added to cart!`)
+  }
+  
   useEffect(() => {
-    setTotal(
-      quantity * (options ? price + options[selected].additionalPrice : price)
-    );
-  }, [quantity, selected, options, price]);
+    if (productData.options?.length) {
+      // Check if productData has options and the array is not empty
+      setTotal(
+        quantity * productData.price +
+          productData.options[selected].additionalPrice * quantity
+      );
+    }
+  }, [quantity, selected, productData]);
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate() // it's used for restoring or rehydrating the state from some form of storage (e.g., localStorage) when the component first loads or the application starts
+  },[])
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">${total.toFixed(2)}</h2>
+      <h2 className="text-2xl font-bold">${total}</h2>
       {/* OPTIONS CONTAINER */}
       <div className="flex gap-4">
-        {options?.map((option, index) => (
-          <button
-            key={option.title}
-            className="min-w-[6rem] p-2 ring-1 ring-red-400 rounded-md"
-            style={{
-              background: selected === index ? "rgb(248 113 113)" : "white",
-              color: selected === index ? "white" : "red",
-            }}
-            onClick={() => setSelected(index)}
-          >
-            {option.title}
-          </button>
-        ))}
+        {productData.options?.length &&
+          productData.options?.map((option, index) => (
+            <button
+              key={option.title} // unique key for each button
+              className="min-w-[6rem] p-2 ring-1 ring-red-400 rounded-md"
+              style={{
+                background: selected === index ? "rgb(248 113 113)" : "white",
+                color: selected === index ? "white" : "red",
+              }}
+              onClick={() => setSelected(index)}
+            >
+              {option.title}
+            </button>
+          ))}
       </div>
       {/* QUANTITY AND ADD BUTTON CONTAINER */}
       <div className="flex justify-between items-center">
@@ -58,7 +82,12 @@ const Price = ({ price, id, options }: Props) => {
           </div>
         </div>
         {/* CART BUTTON */}
-        <button className="uppercase w-56 bg-red-500 text-white p-3 ring-1 ring-red-500">
+        <button
+          className="uppercase w-56 bg-red-500 text-white p-3 ring-1 ring-red-500"
+          onClick={() =>
+            handleAddToCart()
+          }
+        >
           Add to Cart
         </button>
       </div>
