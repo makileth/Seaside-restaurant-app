@@ -5,7 +5,7 @@ import { featuredProducts } from '../data';
 import { ProductType } from "@/types/types";
 
 const getData = async () => {
-  const res = await fetch("/api/products", {cache: 'no-store'});
+  const res = await fetch("https://restaurant-app-dusky.vercel.app/api/products", {cache: 'no-store'});
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

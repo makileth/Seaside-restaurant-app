@@ -16,7 +16,7 @@ const DeleteButton = ({ id }: { id: string }) => {
     return <p>You must be logged in to view this page.</p>;
 
   const handleDelete = async () => {
-    const response = await fetch(`/api/products/${id}`, {
+    const response = await fetch(`https://restaurant-app-dusky.vercel.app/api/products/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

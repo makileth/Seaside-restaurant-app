@@ -112,7 +112,7 @@ const AddPage = () => {
 
     try {
       const url = await upload();
-      const res = await fetch("/api/products", {
+      const res = await fetch("https://restaurant-app-dusky.vercel.app/api/products", {
         method: "POST",
         body: JSON.stringify({
           img: url,
