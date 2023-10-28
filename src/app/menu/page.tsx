@@ -2,6 +2,8 @@ import { MenuType } from "@/types/types";
 import Link from "next/link";
 import React from "react";
 
+export const runtime = "edge"
+
 const getData = async () => {
   const res = await fetch("https://restaurant-app-dusky.vercel.app/api/categories", {cache: 'no-store'});
   if (!res.ok) {
