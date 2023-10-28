@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const getData = async () => {
-  const res = await fetch("/api/categories", {cache: 'no-store'});
+  const res = await fetch("https://restaurant-app-dusky.vercel.app/api/categories", {cache: 'no-store'});
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
