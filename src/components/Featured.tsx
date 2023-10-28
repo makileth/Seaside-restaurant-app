@@ -4,6 +4,8 @@ import React from "react";
 import { featuredProducts } from '../data';
 import { ProductType } from "@/types/types";
 
+export const runtime = "edge"
+
 const getData = async () => {
   const res = await fetch("https://restaurant-app-dusky.vercel.app/api/products", {cache: 'no-store'});
   if (!res.ok) {
