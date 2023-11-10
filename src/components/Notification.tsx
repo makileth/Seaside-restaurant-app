@@ -24,7 +24,9 @@ const Notification = () => {
   }, []);
 
   // Function to determine if the viewport is in mobile mode
-  const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 768px)").matches;
 
   // Define a CSS class for the smooth transition effect.
   const notificationClass = showNotification
@@ -33,7 +35,7 @@ const Notification = () => {
 
   return (
     <div className={`notification ${notificationClass}`}>
-      {isMobile()
+      {isMobile
         ? "Free delivery for all orders for the week!"
         : "Free delivery for all orders for the week! Order your piece of Caribbeans now!"}
     </div>
@@ -41,3 +43,4 @@ const Notification = () => {
 };
 
 export default Notification;
+
