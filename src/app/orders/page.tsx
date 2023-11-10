@@ -21,7 +21,7 @@ const OrdersPage = () => {
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"], // Unique key for this query
-    queryFn: () => fetch("/api/orders").then((res) => res.json()), // Function to fetch data
+    queryFn: () => fetch("https://restaurant-app-dusky.vercel.app/api/orders").then((res) => res.json()), // Function to fetch data
   });
 
   const mutation = useMutation({

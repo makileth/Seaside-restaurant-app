@@ -10,7 +10,7 @@ const SuccessPage = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await fetch(`/api/confirm/${payment_intent}`, {
+        await fetch(`https://restaurant-app-dusky.vercel.app/api/confirm/${payment_intent}`, {
           method: "PUT",
         });
         router.push("/orders");

@@ -27,7 +27,7 @@ const CartPage = () => {
       router.push("/login");
     } else {
       try {
-        const res = await fetch("/api/orders", {
+        const res = await fetch("https://restaurant-app-dusky.vercel.app/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
