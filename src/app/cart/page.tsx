@@ -151,7 +151,7 @@ const CartPage = () => {
             </span>
           </div>
           <button
-            className="bg-sunshineYellow hover:shadow-sunshineYellow hover:shadow-2xl hover:translate-y-[-4px] transition duration-300 text-white p-3 rounded-md w-1/2 self-end"
+            className="bg-sunshineYellow hover:shadow-sunshineYellow hover:shadow-2xl hover:translate-y-[-4px] transition duration-300 text-white p-3 rounded-md w-full md:w-1/2 self-end"
             onClick={() => handleCheckout()}
           >
             CHECKOUT

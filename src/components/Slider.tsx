@@ -57,7 +57,7 @@ const Slider = () => {
       };
 
   return (
-    <div className="flex flex-col h-[100vh] lg:flex-row bg-softBlack">
+    <div className="flex flex-col h-[150vh] sm:h-[125vh] md:h-[100vh] lg:flex-row bg-softBlack">
       {/* TEXT CONTAINER */}
       <motion.div
         className="flex-1 flex items-start md:mt-0 mt-6 justify-center flex-col gap-8 text-white font-bold mb-6 md:mb-12"
