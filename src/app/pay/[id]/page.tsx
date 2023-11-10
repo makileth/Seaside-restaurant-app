@@ -64,7 +64,7 @@ const PayPage = ({ params }: { params: { id: string } }) => {
       {loading ? ( // Check the loading state
         <Loading />
       ) : (
-        <section className="bg-neutral-900 mt-[5rem] my-6 w-auto h-auto max-h-[65rem] items-center justify-center py-9">
+        <section className="bg-neutral-900 mt-[5rem] md:mt-[12rem] my-6 w-auto h-auto max-h-[65rem] items-center justify-center py-9">
           <Elements options={options} stripe={stripePromise}>
             <CheckoutForm />
           </Elements>
