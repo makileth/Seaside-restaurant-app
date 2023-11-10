@@ -52,7 +52,8 @@ const OrdersPage = () => {
   }
 
   if (status === "unauthenticated") {
-    router.push("/");
+    toast.error('Log in to see your orders!')
+    router.push("/login");
   }
 
   const handleUpdate = (e: React.FormEvent<HTMLFormElement>, id: string) => {
