@@ -9,16 +9,16 @@ const UserLinks = () => {
   return (
     <div>
       {status === "authenticated" ? (
-        <div className="gap-4 flex flex-row">
-          <Link href="/orders">My Orders</Link>
-          <Link href="/login" onClick={() => signOut()}>
+        <div className="gap-4 flex flex-row items-center">
+          <Link href="/orders" className="hover:text-sunshineYellow transition duration-300">My Orders</Link>
+          <Link href="/login" className="hover:text-sunshineYellow transition duration-300" onClick={() => signOut()}>
             Logout
           </Link>
         </div>
       ) : (
         <div className="gap-4 flex flex-row">
-          <Link href="/orders">My Orders</Link>
-          <Link href="/login">Log in</Link>
+          <Link href="/orders" className="hover:text-sunshineYellow transition duration-300">My Orders</Link>
+          <Link href="/login" className="hover:text-sunshineYellow transition duration-300" >Log in</Link>
         </div>
       )}
     </div>

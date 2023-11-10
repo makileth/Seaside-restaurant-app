@@ -7,9 +7,10 @@ import {
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import AddressForm from "./AddressForm";
-
+// import { useRouter } from 'next/navigation'
 // Die CheckoutForm-Komponente ist dafür verantwortlich, das Zahlungsformular zu erstellen und die Zahlung zu verarbeiten.
 const CheckoutForm = () => {
+  // const router = useRouter()
   // Verwende Stripe-Hooks, um auf Stripe-Funktionalität zuzugreifen
   const stripe = useStripe();
   const elements = useElements();
@@ -33,6 +34,7 @@ const CheckoutForm = () => {
     if (!clientSecret) {
       return;
     }
+    
 
     // Rufen Sie den PaymentIntent ab und aktualisieren Sie die Nachricht entsprechend dem Status
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
@@ -44,7 +46,9 @@ const CheckoutForm = () => {
           setMessage("Ihre Zahlung wird verarbeitet.");
           break;
         case "requires_payment_method":
-          setMessage("Ihre Zahlung war nicht erfolgreich, bitte versuchen Sie es erneut.");
+          setMessage(
+            "Ihre Zahlung war nicht erfolgreich, bitte versuchen Sie es erneut."
+          );
           break;
         default:
           setMessage("Etwas ist schief gelaufen.");
@@ -97,11 +101,20 @@ const CheckoutForm = () => {
         }}
       />
       <AddressForm />
-      <button disabled={isLoading || !stripe || !elements} id="submit" className="bg-red-500 text-white p-4 rounded-md w-28">
+      <button
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+        className="bg-sunshineYellow hover:shadow-2xl hover:shadow-sunshineYellow hover:translate-y-[-0.2rem] transition duration-300 text-white p-4  rounded-md w-max"
+      >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Jetzt bezahlen"}
+          {isLoading ? (
+            <div className="spinner" id="spinner"></div>
+          ) : (
+            "Jetzt bezahlen"
+          )}
         </span>
       </button>
+      {/* <button onClick={() => router.push('/')}>Cancel</button> */}
       {/* Zeige Fehler- oder Erfolgsmeldungen an */}
       {message && <div id="payment-message">{message}</div>}
     </form>

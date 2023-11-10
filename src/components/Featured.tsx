@@ -19,29 +19,27 @@ const Featured = async () => {
   const featuredProducts:ProductType[] = await getData();
 
   return (
-    <div className="w-screen overflow-x-scroll text-red-500">
+    <div className="w-screen overflow-x-scroll text-sunshineYellow shadow-yellow-400 shadow-2xl">
       {/* WRAPPER */}
       <div className="w-max flex">
         {/* SINGLE ITEM */}
         {featuredProducts.map((item) => (
           <div
             key={item.id}
-            className="w-screen h-[60vh] flex flex-col items-center justify-around p-4 hover:bg-fuchsia-50 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]"
+            className="w-screen h-[60vh] py-12 flex flex-col items-center justify-around p-4 hover:text-yellow-300 hover:bg-neutral-900 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="relative flex-1 w-full hover:rotate-[60deg] transition-all duration-500">
-                <Image src={item.img} alt="" fill className="object-contain" />
+              <div className="relative flex-1 border-[1px] border-neutral-400 hover:border-turquoise rounded-[10px] w-full hover:scale-[102%] transition-all duration-[0.6s] ">
+                <Image src={item.img} alt="" fill className=" object-cover rounded-[10px]" />
               </div>
             )}
             {/* TEXT CONTAINER */}
-            <div className=" flex-1 flex flex-col items-center justify-center text-center gap-4">
-              <h1 className="text-xl font-bold uppercase xl:text-2xl 2xl:text-3xl">{item.title}</h1>
-              <p className="p-4 2xl:p-8">{item.desc}</p>
-              <span className="text-xl font-bold">${item.price}</span>
-              <button className="bg-red-500 text-white p-2 rounded-md">
-                Add to Cart
-              </button>
+            <div className=" flex-1 flex flex-col items-center justify-center text-center gap-4 ">
+              <h1 className="text-xl font-bold md:mt-0 mt-6 uppercase xl:text-4xl 2xl:text-5xl">{item.title}</h1>
+              <p className="p-4 2xl:p-8 text-white">{item.desc}</p>
+              <span className="text-3xl font-bold">${item.price}</span>
+              <button className="bg-sunshineYellow rounded-[10px] hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350">Add to Cart</button>
             </div>
           </div>
         ))}

@@ -5,7 +5,6 @@ const AddressForm = () => {
   return (
     <form action="">
       <div>
-        <label htmlFor="address">Address</label>
         <AddressElement
           options={{ mode: "shipping" }}
           onChange={(event) => {
@@ -15,7 +14,7 @@ const AddressForm = () => {
             }
           }}
         />
-        <input type="text" id="address" />
+      
       </div>
     </form>
   );

@@ -7,11 +7,16 @@ import Footer from "@/components/Footer";
 import AuthProvider from "../components/AuthProvider";
 import QueryProvider from "@/components/QueryProvider";
 import { ToastContainer } from "react-toastify";
+import { Poppins } from "next/font/google";
 
+const poppins = Poppins({
+  weight: "400",
+  subsets: ["latin"],
+});
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Foody",
+  title: "Seaside",
   description: "Best food, try for yourself",
 };
 
@@ -22,15 +27,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <AuthProvider>
           <QueryProvider>
-            <div>
+            <div className="bg-[#080808]">
               <Notification />
               <Navbar />
               {children}
               <Footer />
-              <ToastContainer position="bottom-right" theme="dark" autoClose={3000}/>
+              <ToastContainer
+                position="bottom-right"
+                theme="dark"
+                autoClose={3000}
+              />
             </div>
           </QueryProvider>
         </AuthProvider>

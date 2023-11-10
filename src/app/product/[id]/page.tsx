@@ -18,33 +18,33 @@ const getData = async (id: string) => {
 };
 
 const SingleProductPage = async ({ params }: { params: { id: string } }) => {
-
   const singleProduct: ProductType = await getData(params.id);
 
   return (
-    <div className="p-4 lg:px-20 xl:px-40 h-screen flex flex-col justify-around text-red-500 md:flex-row md:gap-8 md:items-center relative">
+    <div className="p-4 lg:px-20 xl:px-40 mt-[5rem] h-screen flex flex-col justify-around text-white md:flex-row md:gap-8 md:items-center relative">
       {/* IMAGE CONTAINER */}
-     
+
       {singleProduct.img && (
-        <div className="relative w-full h-1/2 md:h-[70%]">
+        <div className="relative w-full h-full md:h-[70%]">
           <Image
             src={singleProduct.img}
             alt=""
-            className="object-contain"
+            className="object-cover border-2 border-turquoise"
             fill
           />
         </div>
       )}
       {/* TEXT CONTAINER */}
-      <div className="h-1/2 flex flex-col gap-4 md:h-[70%] md:justify-center md:gap-6 xl:gap-8">
-        <h1 className="text-3xl font-bold uppercase">
+      <div className="h-[100vh] flex flex-col gap-4 md:h-[70%] md:justify-start md:gap-6 xl:gap-8 mt-6 md:mt-0">
+        <h1 className="text-4xl font-bold text-sunshineYellow uppercase">
           <span>{singleProduct.title}</span>
           <DeleteButton id={singleProduct.id} />
         </h1>
         <p>{singleProduct.desc}</p>
-         <Price productData={singleProduct} /> 
+       
+          <Price productData={singleProduct} />
+     
       </div>
-    
     </div>
   );
 };

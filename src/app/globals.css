@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hide-nav {
+  top: -100px;
+  transition: top 0.3s;
+}
+
+.white-border {
+  border-bottom: 2px solid white;
+}
+
+
+.filter-white {
+  filter: invert(100%); 
+  transition: filter 0.3s ease; 
+}
+
+
+.filter-yellow {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(60deg) brightness(118%) contrast(119%);
+  transition: filter 0.3s ease; 
+}
+
+.notification {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.1s ease-in-out;
+  background-color: #ffc322;
+  text-align: center;
+  align-items: center;
+
+}
+
+.notification-show {
+  height: 25px; /* Adjust the desired height */
+}
+
+.notification-hide {
+  height: 0;
+}
+
+

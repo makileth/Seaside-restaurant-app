@@ -22,10 +22,10 @@ const SuccessPage = () => {
   }, [payment_intent, router]);
 
   return (
-    <main className="mx-auto justify-center items-center">
-      <h1 className="font-bold text-[32px]">Success!</h1>
-      <p>Thank you for your purchase!</p>
-      <p>Redirecting to the orders page...</p>
+    <main className="text-white gap-12 mx-auto justify-center items-center max-w-4xl min-h-[100vh] my-12">
+      <h1 className="mt-[5rem] font-bold text-center text-2xl md:text-[64px] text-sunshineYellow">Success!</h1>
+      <p className="text-center my-7">Thank you for your purchase!</p>
+      <p className="text-center text-red-400">Redirecting to the orders page now...</p>
     </main>
   );
 };

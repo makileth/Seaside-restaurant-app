@@ -3,31 +3,30 @@
 import { ProductType } from "@/types/types";
 import React, { useEffect, useState } from "react";
 import { useCartStore } from "@/utils/store";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Price = ({ productData }: { productData: ProductType }) => {
-
   const { addToCart } = useCartStore();
   const [total, setTotal] = useState(productData.price); // total price
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
 
-  
   const handleAddToCart = () => {
     addToCart({
       id: productData.id,
       title: productData.title,
       img: productData.img,
       price: total,
-      ...(productData.options?.length && { // a spread operator to conditionally add the prop
+      ...(productData.options?.length && {
+        // a spread operator to conditionally add the prop
         optionTitle: productData.options[selected].title,
       }),
       quantity: quantity,
-    })
+    });
 
-    toast.success(`${productData.title} added to cart!`)
-  }
-  
+    toast.success(`${productData.title} added to cart!`);
+  };
+
   useEffect(() => {
     if (productData.options?.length) {
       // Check if productData has options and the array is not empty
@@ -39,11 +38,11 @@ const Price = ({ productData }: { productData: ProductType }) => {
   }, [quantity, selected, productData]);
 
   useEffect(() => {
-    useCartStore.persist.rehydrate() // it's used for restoring or rehydrating the state from some form of storage (e.g., localStorage) when the component first loads or the application starts
-  },[])
+    useCartStore.persist.rehydrate(); // it's used for restoring or rehydrating the state from some form of storage (e.g., localStorage) when the component first loads or the application starts
+  }, []);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 my-6">
       <h2 className="text-2xl font-bold">${total}</h2>
       {/* OPTIONS CONTAINER */}
       <div className="flex gap-4">
@@ -51,10 +50,10 @@ const Price = ({ productData }: { productData: ProductType }) => {
           productData.options?.map((option, index) => (
             <button
               key={option.title} // unique key for each button
-              className="min-w-[6rem] p-2 ring-1 ring-red-400 rounded-md"
+              className="min-w-[6rem] p-2 rounded-md"
               style={{
-                background: selected === index ? "rgb(248 113 113)" : "white",
-                color: selected === index ? "white" : "red",
+                background: selected === index ? "#ffc322" : "#092226",
+               // color: selected === index ? "white" : "red",
               }}
               onClick={() => setSelected(index)}
             >
@@ -63,10 +62,10 @@ const Price = ({ productData }: { productData: ProductType }) => {
           ))}
       </div>
       {/* QUANTITY AND ADD BUTTON CONTAINER */}
-      <div className="flex justify-between items-center">
+      <div className="flex md:flex-row flex-col md:gap-0 gap-6 justify-between items-start md:items-center py-3">
         {/* QUANTITY */}
-        <div className="flex justify-between w-full p-3 ring-1 ring-red-500">
-          <span>Quantity</span>
+        <div className="flex justify-between w-full p-3 ring-1 ring-white rounded-[30px]">
+          <span className="pl-2"> • Quantity</span>
           <div className="flex gap-4 items-center">
             <button
               onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
@@ -82,11 +81,10 @@ const Price = ({ productData }: { productData: ProductType }) => {
           </div>
         </div>
         {/* CART BUTTON */}
+      
         <button
-          className="uppercase w-56 bg-red-500 text-white p-3 ring-1 ring-red-500"
-          onClick={() =>
-            handleAddToCart()
-          }
+          onClick={() => handleAddToCart()}
+          className="bg-sunshineYellow  md:ml-4 rounded-[10px] hover:translate-y-[-5px] text-white py-[0.9rem] w-[12rem] hover:shadow-yellow-400 hover:shadow-2xl transition duration-350"
         >
           Add to Cart
         </button>

@@ -1,10 +1,39 @@
-import React from 'react'
+"use client";
+import React, { useState, useEffect } from "react";
 
 const Notification = () => {
-  return (
-    <div className='h-12 bg-red-500 text-white px-4 flex items-center justify-center text-center text-sm md:text-base cursor-pointer'>Free delivery for all orders over $50. Order your food now!
-    </div>
-  )
-}
+  const [showNotification, setShowNotification] = useState(true);
 
-export default Notification
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setShowNotification(true);
+      } else {
+        setShowNotification(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Function to determine if the viewport is in mobile mode
+  const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+  
+  // Define a CSS class for the smooth transition effect.
+  const notificationClass = showNotification
+    ? "notification-show"
+    : "notification-hide";
+
+  return (
+    <div className={`notification ${notificationClass}`}>
+      {isMobile() ? "Free delivery for all orders for the week!" : "Free delivery for all orders for the week! Order your piece of Caribbeans now!"}
+    </div>
+  );
+};
+
+export default Notification;
+
