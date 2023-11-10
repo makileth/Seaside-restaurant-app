@@ -17,7 +17,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Seaside",
-  description: "Best food, try for yourself",
+  description:
+    "Welcome to Seaside, where the vibrant spirit of the Caribbean comes alive on every plate. Immerse yourself in a culinary journey that celebrates the rich tapestry of flavors and traditions from the islands. Our menu, a harmonious blend of Caribbean Classics, Island Specialties, and Tropical Cocktails, invites you to explore the authentic essence of Caribbean cuisine. From the fiery embrace of Jerk Chicken to the tender indulgence of Curry Goat and the refreshing sips of our handcrafted Mojitos, every dish and cocktail is a passport to the sun-soaked beaches and lively culture of the Caribbean. At Seaside, we invite you to savor the warmth, spice, and tropical delights that define our culinary haven. Join us and let the flavors of the Caribbean transport you to a place where every bite tells a story of the islands.",
 };
 
 export default function RootLayout({
