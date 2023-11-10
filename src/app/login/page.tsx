@@ -28,7 +28,7 @@ const LoginPage = () => {
             src="/login.jpg"
             alt="login img"
             fill
-            className="object-cover"
+            className="object-cover rounded-l-[10px]"
           />
         </div>
         {/* FORM CONTAINER */}
