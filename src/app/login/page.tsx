@@ -26,9 +26,8 @@ const LoginPage = () => {
         <div className="relative h-1/3 w-full md:h-full md:w-1/2">
           <Image
             src="/login.png"
-            alt=""
-            width={20}
-            height={20}
+            alt="login img"
+            layout="fill"
             className="object-cover"
           />
         </div>
@@ -44,7 +43,7 @@ const LoginPage = () => {
           >
             <Image
               src="/google.png"
-              alt=""
+              alt="google img"
               width={20}
               height={20}
               className="object-contain"
@@ -54,7 +53,7 @@ const LoginPage = () => {
           <button className="flex gap-4 p-4 ring-1 ring-blue-100 hover:bg-blue-500 hover:ring-blue-500 transition duration-300 rounded-md">
             <Image
               src="/facebook.png"
-              alt=""
+              alt="facebook img"
               width={20}
               height={20}
               className="object-contain"
