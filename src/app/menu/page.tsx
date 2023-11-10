@@ -78,7 +78,7 @@ const MenuPage = () => {
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center my-[2rem] md:h-[45rem]">
-            {menu.map((category) => (
+            {menu?.map((category) => (
               <Link
                 href={`/menu/${category.slug}`}
                 key={category.id}

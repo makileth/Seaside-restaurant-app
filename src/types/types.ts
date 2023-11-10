@@ -20,7 +20,7 @@ export type OrderType = {
   id: string;
   userEmail: string;
   price: number;
-  products: object[];
+  products: { title: string }[];
   status: string;
   createdAt: Date;
   intent_id?: String

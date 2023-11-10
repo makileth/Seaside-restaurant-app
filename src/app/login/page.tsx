@@ -27,7 +27,8 @@ const LoginPage = () => {
           <Image
             src="/login.png"
             alt=""
-            fill
+            width={20}
+            height={20}
             className="object-cover"
           />
         </div>
