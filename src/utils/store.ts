@@ -19,7 +19,6 @@ export const useCartStore = create(
       totalPrice: INITIAL_STATE.totalPrice,
 
       addToCart(item: any) {
-
         const products = get().products;
 
         const productInState = products.find(
@@ -27,7 +26,6 @@ export const useCartStore = create(
         );
 
         if (productInState) {
-          
           const updatedProducts = products.map((product) =>
             product.id === productInState.id // change properties if match
               ? {
@@ -60,9 +58,8 @@ export const useCartStore = create(
 
       removeFromCart(item: any) {
         set((state: any) => ({
-          
-          //  stores products that do not match 
-          products: state.products.filter( 
+          //  stores products that do not match
+          products: state.products.filter(
             (product: any) => product.id !== item.id
           ),
 
@@ -71,7 +68,16 @@ export const useCartStore = create(
           totalPrice: state.totalPrice - item.price,
         }));
       },
+
+      adminResetCart(item: any) {
+        set((state: any) => ({
+          products: [],
+          totalItems: 0,
+          totalPrice: 0,
+        }));
+      },
     }),
+
     { name: "cart", skipHydration: true }
   )
 );

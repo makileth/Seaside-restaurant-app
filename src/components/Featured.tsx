@@ -28,7 +28,7 @@ const Featured = async () => {
         {featuredProducts.map((item) => (
           <div
             key={item.id}
-            className="w-screen h-[60vh] py-12 flex flex-col items-center justify-around p-4 hover:text-yellow-300 hover:bg-neutral-900 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]"
+            className="w-screen h-[100vh] py-12 flex flex-col items-center justify-around p-4 hover:text-yellow-300 hover:bg-neutral-900 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]"
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
