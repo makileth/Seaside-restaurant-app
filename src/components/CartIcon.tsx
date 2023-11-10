@@ -26,7 +26,7 @@ const CartIcon = () => {
         transition={{ duration: 0.6 }} // Adjust the duration as needed
         className="relative w-8 h-8 md:w-5 md:h-5"
       >
-        <Image src="/cart.svg" alt="" fill className="filter-white" />
+        <Image src="/cart.svg" alt="" fill className="" />
       </motion.div>
       <span>({totalItems})</span>
     </Link>

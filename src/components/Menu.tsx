@@ -24,7 +24,7 @@ const Menu = () => {
         width={20}
         height={20}
         onClick={() => setOpen(!open)}
-        className="cursor-pointer filter-white"
+        className="cursor-pointer "
       />
       {open && (
         <motion.div
@@ -42,7 +42,7 @@ const Menu = () => {
             width={20}
             height={20}
             onClick={() => setOpen(!open)}
-            className="cursor-pointer absolute right-5 top-5 filter-white"
+            className="cursor-pointer absolute right-5 top-5 "
           />
           {links.map((item) => (
             <Link
