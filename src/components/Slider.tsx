@@ -28,21 +28,7 @@ const data = [
   },
 ];
 
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-const textContainerAnimation = isMobile
-  ? {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 },
-      transition: { duration: 1 },
-    }
-  : {
-      initial: { opacity: 0, x: -50 },
-      animate: { opacity: 1, x: 0 },
-      exit: { opacity: 0, x: 100 },
-      transition: { duration: 1 },
-    };
+const isMobile = () => (typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false);
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -55,6 +41,20 @@ const Slider = () => {
     );
     return () => clearInterval(interval);
   }, []);
+
+  const textContainerAnimation = isMobile()
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: 1 },
+      }
+    : {
+        initial: { opacity: 0, x: -50 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: 100 },
+        transition: { duration: 1 },
+      };
 
   return (
     <div className="flex flex-col h-[100vh] lg:flex-row bg-softBlack">
