@@ -25,7 +25,7 @@ const LoginPage = () => {
         {/* IMAGE CONTAINER */}
         <div className="relative h-1/3 w-full md:h-full md:w-1/2">
           <Image
-            src="/login.png"
+            src="/login.jpg"
             alt="login img"
             fill
             className="object-cover"
