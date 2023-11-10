@@ -1,49 +1,42 @@
-// WITH A LIBRARY
-// "use client"
-// import React from 'react'
-// import Countdown from 'react-countdown'
-
-// const endingDate = new Date("2023-07-25")
-
-// const CountDown = () => {
-//   return (
-//     <Countdown className='font-bold text-5xl text-yellow-300' date={endingDate}/>
-//   )
-// }
-
-// export default CountDown
-
-
-// WITHOUT A LIBRARY
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 
 const CountDown = () => {
-  
-  let difference = +new Date(`11/10/2023`) - +new Date();
-  const [delay, setDelay] = useState(difference);
+  const [timeRemaining, setTimeRemaining] = useState<number>(0);
 
-  const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((difference / 1000 / 60) % 60);
-  const s = Math.floor((difference / 1000) % 60);
+  const calculateTime = (timeRemaining: number) => {
+    const h = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((timeRemaining / (1000 * 60)) % 60);
+    const s = Math.floor((timeRemaining / 1000) % 60);
+
+    return `${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+  };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setDelay(delay - 1);
-    }, 1000);
+    const duration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
-    if (delay === 0) {
-      clearInterval(timer);
-    }
+    let remainingTime = duration;
+
+    const timer = setInterval(() => {
+      setTimeRemaining((prevTime) => {
+        if (prevTime > 0) {
+          return prevTime - 1000;
+        } else {
+          // Reset the timer when it reaches zero
+          remainingTime = duration;
+          return duration;
+        }
+      });
+    }, 1000);
 
     return () => {
       clearInterval(timer);
     };
-  });
+  }, []); // No dependencies, as duration is a constant within this scope
+
   return (
     <span className="font-bold text-5xl text-yellow-300">
-      {d}:{h < 10 && '0'}{h}:{m < 10 && '0'}{m}:{s < 10 && '0'}{s}
+      {calculateTime(timeRemaining)}
     </span>
   );
 };
