@@ -6,25 +6,27 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const DeleteButton = ({ id }: { id: string }) => {
-  
   const { data: session, status } = useSession();
 
   const router = useRouter();
 
-  if (status === "loading") return <p>Loading..</p>;
+  if (status === "loading") return console.log('Loading Admin Interface...');
   if (status === "unauthenticated" || !session?.user.isAdmin)
-    return <p>You must be logged in to view this page.</p>;
+    return console.log("No Admin Permissions");
 
   const handleDelete = async () => {
-    const response = await fetch(`https://restaurant-app-dusky.vercel.app/api/products/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: session?.user?.id,
-      }),
-    });
+    const response = await fetch(
+      `https://restaurant-app-dusky.vercel.app/api/products/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: session?.user?.id,
+        }),
+      }
+    );
 
     if (response.ok) {
       router.push("/");

@@ -23,7 +23,7 @@ const LoginPage = () => {
       {/* BOX */}
       <div className="mt-[5rem] h-full bg-neutral-900 bg-opacity-70 text-white rounded-[10px] flex flex-col md:flex-row md:h-[70%] md:w-full lg:w-[60%] 2xl:w-1/2">
         {/* IMAGE CONTAINER */}
-        <div className="relative rounded-l-[10px] h-[30rem] w-full md:w-1/2">
+        <div className="relative rounded-t-[10px] md:rounded-t-[0px] md:rounded-l-[10px] h-[30rem] w-full md:w-1/2">
           <Image
             src="/login.jpg"
             alt="login img"

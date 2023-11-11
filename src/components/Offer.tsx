@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import CountDown from "./CountDown";
-
+import { useRouter } from "next/router";
 const Offer = () => {
+
+  const router = useRouter();
   return (
     <div className="bg-black h-[120vh] flex flex-col md:flex-row md:justify-between bg-right md:bg-center bg-no-repeat bg-[url('/offerBg.jpg')] md:h-[70vh]">
       {/* TEXT CONTAINER */}
@@ -22,7 +24,7 @@ const Offer = () => {
         </div>
 
         <CountDown />
-        <button className="bg-sunshineYellow rounded-[10px] hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350">
+        <button onClick={() => router.push('/product/clniy26140000trxcnm414655')} className="bg-sunshineYellow rounded-[10px] hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350">
           Order Now
         </button>
       </div>

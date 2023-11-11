@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const data = [
   {
@@ -33,6 +34,7 @@ const isMobile = () => (typeof window !== "undefined" ? window.matchMedia("(max-
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const router = useRouter()
   useEffect(() => {
     const interval = setInterval(
       () =>
@@ -71,7 +73,7 @@ const Slider = () => {
           </span>
           <span>{data[currentSlide].titleSecond}</span>
         </h1>
-        <button className="bg-sunshineYellow rounded-[10px] ml-4 md:ml-11 hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350">
+        <button onClick={() => router.push('/menu')} className="bg-sunshineYellow rounded-[10px] ml-4 md:ml-11 hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350">
           Order Now
         </button>
       </motion.div>
