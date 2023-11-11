@@ -10,9 +10,12 @@ const DeleteButton = ({ id }: { id: string }) => {
 
   const router = useRouter();
 
-  if (status === "loading") return console.log('Loading Admin Interface...');
-  if (status === "unauthenticated" || !session?.user.isAdmin)
-    return console.log("No Admin Permissions");
+  if (status === "loading") {
+    console.log("Loading Admin Interface...");
+  }
+  if (status === "unauthenticated" || !session?.user.isAdmin) {
+    console.log("No Admin Permissions");
+  }
 
   const handleDelete = async () => {
     const response = await fetch(

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import CountDown from "./CountDown";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 const Offer = () => {
 
   const router = useRouter();
