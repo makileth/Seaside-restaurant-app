@@ -30,7 +30,7 @@ export const DELETE = async (
   req: NextRequest,
   { params }: { params: { id: string } }
 ) => {
-  // TODO: Not an admin although im one (bruh)
+
   const { id } = params;
 
   const session = await getAuthSession();
