@@ -98,7 +98,7 @@ const MenuPage = () => {
                   </h1>
                   <p
                     style={{ textShadow: "0px 0px 5px rgba(0, 0, 0, 1)" }}
-                    className="text-lg my-8 bg-white opacity-10 backdrop-blur-lg px-4 py-6"
+                    className="text-lg my-8 bg-white bg-opacity-10 backdrop-blur-lg px-4 py-6"
                   >
                     {category.desc}
                   </p>
