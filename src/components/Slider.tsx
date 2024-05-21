@@ -29,12 +29,15 @@ const data = [
   },
 ];
 
-const isMobile = () => (typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false);
+const isMobile = () =>
+  typeof window !== "undefined"
+    ? window.matchMedia("(max-width: 768px)").matches
+    : false;
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     const interval = setInterval(
       () =>
@@ -61,22 +64,25 @@ const Slider = () => {
   return (
     <div className="flex flex-col h-[115vh] md:h-[100vh] lg:flex-row bg-softBlack">
       {/* TEXT CONTAINER */}
-      <motion.div
-        className="flex-1 flex items-start md:mt-0 mt-6 justify-center flex-col gap-8 text-white font-bold mb-6 md:mb-12"
-        key={currentSlide}
-        {...textContainerAnimation}
-      >
-        <h1 className="text-[2.05rem] text-start mt-12 uppercase p-4 md:p-10 md:text-6xl xl:text-7xl">
+      <div className="flex-1 flex items-start md:mt-0 mt-6 justify-center flex-col gap-8 text-white font-bold mb-6 md:mb-12">
+        <motion.h1
+          key={currentSlide}
+          {...textContainerAnimation}
+          className="text-[2.05rem] text-start mt-12 uppercase p-4 md:p-10 md:text-6xl xl:text-7xl"
+        >
           <span>{data[currentSlide].title}</span>
           <span className="mr-3 bg-clip-text text-transparent  bg-gradient-to-r from-sunshineYellow to-turquoise">
             {data[currentSlide].titleGradient}
           </span>
           <span>{data[currentSlide].titleSecond}</span>
-        </h1>
-        <button onClick={() => router.push('/menu')} className="bg-sunshineYellow rounded-[10px] ml-4 md:ml-11 hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350">
+        </motion.h1>
+        <button
+          onClick={() => router.push("/menu")}
+          className="bg-sunshineYellow rounded-[10px] ml-4 md:ml-11 hover:translate-y-[-5px] text-white py-4 px-8 hover:shadow-yellow-400 hover:shadow-2xl transition duration-350"
+        >
           Order Now
         </button>
-      </motion.div>
+      </div>
       {/* IMAGE CONTAINER */}
       <div className="w-full flex-1 relative">
         <motion.div

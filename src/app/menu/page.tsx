@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { MenuType } from "@/types/types";
 import Link from "next/link";
@@ -9,9 +9,12 @@ import Loading from "@/components/Loading";
 export const runtime = "edge";
 
 const getData = async () => {
-  const res = await fetch("https://restaurant-app-dusky.vercel.app/api/categories", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    "https://restaurant-app-dusky.vercel.app/api/categories",
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -19,13 +22,12 @@ const getData = async () => {
 };
 
 const MenuPage = () => {
-
   const {
     data: menu,
     isLoading,
     error,
-  } = useQuery<MenuType>(['menu'], () => getData())
-  
+  } = useQuery<MenuType>(["menu"], () => getData());
+
   if (isLoading) {
     return <Loading />;
   }
@@ -53,8 +55,11 @@ const MenuPage = () => {
               Caribbean like never before.
             </h4>
           </div>
-          <div className="flex md:mt-[0rem] h-[140px] w-full md:flex-row md:h-[240px] rounded-[10px] my-4 hover:shadow-2lg hover:shadow-sunshineYellow">
-            <div className="h-full md:w-[25%] w-[33%]  bg-[url(https://i.pinimg.com/564x/12/19/e9/1219e954cb89567fc3b6dade4c5dbdab.jpg)] relative bg-center bg-cover rounded-l-[10px]">
+          <Link
+            href={`/product/clwgbtjg20008pspnsmvj9nwa`}
+            className="flex md:mt-[0rem] h-[140px] w-full md:flex-row md:h-[240px] rounded-[10px] my-4 hover:shadow-2lg hover:shadow-sunshineYellow"
+          >
+            <div className="h-full md:w-[25%] w-[33%]  bg-[url(https://i.pinimg.com/736x/2d/4f/9a/2d4f9a20f52d530f19a74339325322df.jpg)] relative bg-center bg-cover rounded-l-[10px]">
               <Image
                 src="/new.svg"
                 alt="new"
@@ -66,16 +71,15 @@ const MenuPage = () => {
             <div className="h-full md:w-[75%] w-[67%] bg-neutral-900 rounded-r-[10px]">
               <div className="flex flex-col p-4">
                 <h1 className="md:text-[32px] text-[12px] font-bold text-white">
-                  Introducing Caribbean Elegance: Curry Goat Delight
+                  Goat stew
                 </h1>
                 <h4 className="md:text-[18px] text-[7.5px] font-thin text-white py-2">
-                  Succulent goat, slow-cooked in a symphony of Caribbean spices,
-                  awaits your taste buds. Our new Curry Goat dish embodies the
-                  essence of the islands, a tender and flavorful masterpiece.
+                  A rich and flavorful stew made with tender goat meat,
+                  slow-cooked with Caribbean spices.
                 </h4>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="flex flex-col md:flex-row items-center justify-center my-[2rem] md:h-[45rem]">
             {menu?.map((category) => (
@@ -94,7 +98,7 @@ const MenuPage = () => {
                   </h1>
                   <p
                     style={{ textShadow: "0px 0px 5px rgba(0, 0, 0, 1)" }}
-                    className="text-lg my-8"
+                    className="text-lg my-8 bg-white opacity-10 backdrop-blur-lg px-4 py-6"
                   >
                     {category.desc}
                   </p>
