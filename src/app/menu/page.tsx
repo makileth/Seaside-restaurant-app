@@ -69,9 +69,6 @@ const MenuPage = () => {
                 <h1 className="md:text-[32px] text-[12px] font-bold text-white">
                   Goat stew
                 </h1>
-                <h1 className="md:text-[32px] text-[12px] font-bold text-accent">
-                  Limited Dish!
-                </h1>
                 <h4 className="md:text-[18px] text-[7.5px] font-thin text-white py-2">
                   A rich and flavorful stew made with tender goat meat,
                   slow-cooked with Caribbean spices.
