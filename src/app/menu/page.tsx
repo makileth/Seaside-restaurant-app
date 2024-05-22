@@ -48,11 +48,7 @@ const MenuPage = () => {
               We invite you to embark on a journey through the vibrant and
               diverse world of Caribbean cuisine. Our menu is thoughtfully
               crafted and divided into three delectable categories to suit your
-              every craving. Whether you&apos;re in the mood for Caribbean
-              Classics, Island Specialties, or a refreshing Caribbean Cocktail,
-              you&apos;ll find a delightful array of dishes that capture the
-              essence of the islands. Dive into the delicious and discover the
-              Caribbean like never before.
+              every craving.
             </h4>
           </div>
           <Link
@@ -72,6 +68,9 @@ const MenuPage = () => {
               <div className="flex flex-col p-4">
                 <h1 className="md:text-[32px] text-[12px] font-bold text-white">
                   Goat stew
+                </h1>
+                <h1 className="md:text-[32px] text-[12px] font-bold text-accent">
+                  Limited Dish!
                 </h1>
                 <h4 className="md:text-[18px] text-[7.5px] font-thin text-white py-2">
                   A rich and flavorful stew made with tender goat meat,
@@ -102,7 +101,7 @@ const MenuPage = () => {
                   >
                     {category.desc}
                   </p>
-                  <button
+                  {/* <button
                     className={`hidden absolute bottom-8 left-8 2xl:block hover:bg-sunshineYellow hover:text-white transition duration-300 ease-in-out bg-${
                       category.color
                     } text-${
@@ -110,7 +109,7 @@ const MenuPage = () => {
                     } py-2 px-9 rounded-md`}
                   >
                     Explore
-                  </button>
+                  </button> */}
                 </div>
               </Link>
             ))}

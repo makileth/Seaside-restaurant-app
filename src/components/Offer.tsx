@@ -9,9 +9,15 @@ const Offer = () => {
     <div className="bg-black h-[120vh] flex flex-col md:flex-row md:justify-between md:h-[70vh]">
       {/* TEXT CONTAINER */}
       <div className="flex-1 flex flex-col justify-center items-center text-center gap-8 p-6 bg-neutral-950">
-        <h1 className=" text-5xl font-bold xl:text-6xl text-sunshineYellow text-shadow-lg">
-          Roast pork
-        </h1>
+        <div className="flex flex-col gap-2 items-center text-center">
+          <h1 className=" text-xl font-bold xl:text-2xl text-turquoise text-shadow-lg">
+            Limited Dish!
+          </h1>
+          <h1 className=" text-5xl font-bold xl:text-6xl text-sunshineYellow text-shadow-lg">
+            Roast pork
+          </h1>
+        </div>
+
         <div className=" py-3">
           <p className="text-white xl:text-xl font-thin px-4 md:px-0">
             Slow-roasted pork seasoned with a blend of Caribbean spices, served
